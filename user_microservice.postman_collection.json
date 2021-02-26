@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "a4212f09-9042-4699-95eb-dcfb052a5597",
+		"name": "user_microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post_user1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Palak Singh\",\n    \"mobile\": \"123456789\",\n    \"email\": \"palak@palak.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/users/",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_user2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Aditya Roy\", \n    \"mobile\": \"123456788\",\n    \"email\": \"aditya@aditya.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/users/",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_user3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Karan Jadhav\", \n    \"mobile\": \"123456787\",\n    \"email\": \"karan@karan.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/users/",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_users",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/users/17/",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"users",
+						"17",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/users/17/",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"users",
+						"17",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch_user",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Kamya Singhi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/users/",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

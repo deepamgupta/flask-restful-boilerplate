@@ -1,0 +1,9 @@
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 164-404-199
+ERROR:root:User with that id not found
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2021 14:19:09] "[31m[1mDELETE /users/345/ HTTP/1.1[0m" 400 -
+ERROR:root:User with that id not found
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2021 14:19:15] "[31m[1mDELETE /users/345/ HTTP/1.1[0m" 400 -
+ERROR:root:User with that id not found
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2021 14:19:25] "[31m[1mDELETE /users/345/ HTTP/1.1[0m" 400 -
+INFO:werkzeug: * Detected change in '/home/genius/Desktop/walkover/user_microservice/app/resources/__init__.py', reloading
