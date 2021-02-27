@@ -4,6 +4,7 @@ from app.models.user import User
 
 
 class UpdateUserAPI(Resource):
+    query = db.session.query(User)
     def patch(self, id=None):
         try:
 
@@ -11,12 +12,13 @@ class UpdateUserAPI(Resource):
                 err_msg = 'Please provide valid id of the user to update.'
                 return response_body(None, err_msg), 400
 
+
             json_data = request.get_json(force=True)
             name = json_data.get('name')
             mobile = json_data.get('mobile')
             email = json_data.get('email')
 
-            user = db.session.query(User).filter(User.id == id).first()
+            user = query.filter(User.id == id).first()
 
             if name:
                 user.name = name

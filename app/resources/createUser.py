@@ -3,6 +3,7 @@ from app.resources import *
 from app.models.user import User
 
 class CreateUserAPI(Resource):
+    query = db.session.query(User)
     def post(self):
 
         try:
@@ -20,7 +21,7 @@ class CreateUserAPI(Resource):
                 logging.error(err_msg)
                 return response_body(None, err_msg), 400
             else:
-                user = db.session.query(User).filter(User.mobile == mobile).first()
+                user = query.filter(User.mobile == mobile).first()
                 if user:
                     err_msg = 'user with that mobile already exists'
                     logging.error(err_msg)
@@ -32,7 +33,7 @@ class CreateUserAPI(Resource):
                 logging.error(err_msg)
                 return response_body(None, err_msg), 400
             else:
-                user = db.session.query(User).filter(User.email == email).first()
+                user = query.filter(User.email == email).first()
                 if user:
                     err_msg = 'user with that email already exists'
                     logging.error(err_msg)
@@ -46,7 +47,7 @@ class CreateUserAPI(Resource):
             db.session.add(new_user)
             db.session.commit()
 
-            return response_body({'user':{'id': new_user.id,
+            return response_body({'user': {'id': new_user.id,
                                           'name': new_user.name,
                                           'mobile':new_user.mobile,
                                           'email':new_user.email}},
