@@ -3,16 +3,16 @@ from app.resources import *
 from app.models.user import User
 
 class DeleteUserAPI(Resource):
-
+    query = db.session.query(User)
     def delete(self, id=None):
         global message, response_status
         try:
             if not id:
-                num_rows_deleted = db.session.query(User).delete()
+                num_rows_deleted = query.delete()
                 message = 'deleted all users'
                 response_status = 200
             else:
-                num_rows_deleted = db.session.query(User).filter(User.id == id).delete()
+                num_rows_deleted = query.filter(User.id == id).delete()
                 message = 'User deleted successfully!'
                 response_status = 200
                 if not num_rows_deleted:

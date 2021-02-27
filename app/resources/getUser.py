@@ -3,13 +3,14 @@ from app.resources import *
 from app.models.user import User
 
 class GetUserAPI(Resource):
+    query = db.session.query(User)
     def get(self, id=None):
 
         try:
             if not id:
-                users = db.session.query(User).all()
+                users = query.all()
             else:
-                users = db.session.query(User).filter(User.id == id)
+                users = query.filter(User.id == id)
 
                 if not users:
                     err_msg = "User with the id not found."
