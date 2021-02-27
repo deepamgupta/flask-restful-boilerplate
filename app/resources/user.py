@@ -3,7 +3,9 @@ from app.resources import *
 from app.models.user import User
 
 class CrudAPI(Resource):
+
     def post(self):
+        query = db.session.query(User)
         try:
             json_data = request.get_json(force=True)
 
@@ -20,7 +22,7 @@ class CrudAPI(Resource):
                 return response_body(None, err_msg), 400
 
 
-            user = db.session.query(User).filter(User.mobile == mobile).first()
+            user = query.filter(User.mobile == mobile).first()
             if user:
                 err_msg = 'user with that mobile already exists'
                 logging.error(err_msg)
@@ -33,7 +35,7 @@ class CrudAPI(Resource):
                 logging.error(err_msg)
                 return response_body(None, err_msg), 400
 
-            user = db.session.query(User).filter(User.email == email).first()
+            user = query.filter(User.email == email).first()
             if user:
                 err_msg = 'user with that email already exists'
                 logging.error(err_msg)
@@ -57,6 +59,7 @@ class CrudAPI(Resource):
             return response_body(None, 'Something went wrong!'), 500
 
     def delete(self, id=None):
+        query = db.session.query(User)
         global message, response_status
         try:
             if not id:
@@ -64,7 +67,7 @@ class CrudAPI(Resource):
                 message = 'deleted all users'
                 response_status = 200
             else:
-                num_rows_deleted = db.session.query(User).filter(User.id == id).delete()
+                num_rows_deleted = query.filter(User.id == id).delete()
                 message = 'User deleted successfully!'
                 response_status = 200
                 if not num_rows_deleted:
@@ -81,12 +84,12 @@ class CrudAPI(Resource):
             return response_body(None, 'Something went wrong!'), 500
 
     def get(self, id=None):
-
+        query = db.session.query(User)
         try:
             if not id:
-                users = db.session.query(User).all()
+                users = query.all()
             else:
-                users = db.session.query(User).filter(User.id == id)
+                users = query.filter(User.id == id)
 
                 if not users:
                     err_msg = "User with the id not found."
@@ -115,6 +118,7 @@ class CrudAPI(Resource):
             return response_body(None, 'Something went wrong!'), 500
 
     def patch(self, id=None):
+        query = db.session.query(User)
         try:
 
             if not id:
@@ -126,7 +130,7 @@ class CrudAPI(Resource):
             mobile = json_data.get('mobile')
             email = json_data.get('email')
 
-            user = db.session.query(User).filter(User.id == id).first()
+            user = query.filter(User.id == id).first()
 
             if name:
                 user.name = name
